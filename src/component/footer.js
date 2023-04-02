@@ -8,7 +8,7 @@ function Reactfooter() {
       <footer className='section-p1'>
         <div className='col'>
             <h3>Logo</h3>
-            <h4>Contanct</h4>
+            <h4>Contact</h4>
             <p><strong>Address: </strong>Maulana Azad National Institute of Technology, Bhopal</p>
             <p><strong>phone: </strong>(+91) 9893213566 / </p>
             <p><strong>Hour: </strong>24x7 available,mon - sat </p>
@@ -24,19 +24,19 @@ function Reactfooter() {
         </div>
         <div className='col'>
             <h4>About</h4>
-            <a href="/">About Us</a>
+            <a href="/about">About Us</a>
             <a href="/">Delivery Information</a>
             <a href="/">Privacy policy</a>
             <a href="/">Terms & Condition</a>
-            <a href="/">Contact Us</a>
+            <a href="/contact">Contact Us</a>
         </div>
         <div className='col'>
             <h4>My Account</h4>
             <a href="/">Sign In</a>
-            <a href="/">View cart</a>
+            <a href="/cart">View cart</a>
             <a href="/">My wishlist</a>
             <a href="/">Track my order</a>
-            <a href="/">Help</a>
+            <a href="/contact">Help</a>
         </div>
         <div className='copy'>
             <p>@copyright Abhay </p>

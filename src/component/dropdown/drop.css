@@ -1,0 +1,90 @@
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap'); */
+
+* {
+
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  
+}
+.wrapper{
+  position: sticky;
+}
+#drop {
+  display: inline-flex;
+  text-align:center;
+  background-color: #088;
+  
+  
+}
+
+ul .down {
+  list-style: none;
+  border: 1px solid #088;
+  padding: 10px 40px;
+  background: linear-gradient(to bottom, #088, #088);
+  box-shadow: inset 0px 1px 0px #97c4fe;
+  cursor: pointer;
+}
+/* ul li:hover {
+  background: linear-gradient(to bottom, #088, #088);
+} */
+ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+ul li:hover a {
+  color: #ccc;
+}
+.icon {
+  margin-left: 10px;
+}
+.sub-menu {
+  position: absolute;
+  margin: 10px 0 0 -30px;
+  display: none;
+}
+.sub-menu ul {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.sub-menu ul li {
+  padding: 10px 600px;
+  display: flex;
+  background: #088;
+  border: none;
+  text-align: left;
+}
+.wrapper #drop li:hover .sub-menu {
+  display: block;
+}
+.wrapper ul li:hover .sub-menu ul {
+  margin-left: -10px;
+}
+.wrapper ul li:hover .sub-menu ul li {
+  width: 170px;
+  padding: 10px;
+}
+.sub-menu ul li:hover a {
+  color: #fff;
+}
+
+.sub-menu-2 {
+  display: none;
+  position: absolute;
+  margin: -10px 160px;
+}
+.sub-menu-2 ul li a span {
+  color: #ccc;
+}
+.sub-menu-2 ul li:hover a span {
+  color: #fff;
+}
+.sub-menu ul li:hover .sub-menu-2 {
+  display: block;
+}
+.down1{
+    width: 159px;
+}

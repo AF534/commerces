@@ -1,146 +1,64 @@
 import React from 'react'
-import image from './image/product/anime.png'
-import { FaStar,FaCartPlus } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import {useGetAllProductsQuery } from "../feature/productApi";
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../feature/cartSlice';
+import { useNavigate } from "react-router";
 
-function ReactArrival() {
+const ReactArrival = () => {
+
+  const { data, error, isLoading } = useGetAllProductsQuery();
+//   console.log("Api", isLoading);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+const handleAddToCart = (product) =>{
+    dispatch(addToCart(product));
+    navigate("/cart");
+};
+
   return (
+    <div>
+    {isLoading?(
+        <p>loading</p>
+      ):error?(
+        <p>error is coming</p>
+      ) : (
     <>
+
       <section id='product' className='section-p1'>
         <h2>New Arrivals</h2>
         <p>Some collection of New Arrivals </p>
         <div className='pro-container'>
-            <div className='pro'>
-                <img src={image} alt="/" />
+        {data &&
+              data?.map((product) => (
+            <div key={product.id} className='pro'>
+            <img src={product.image} alt={product.name} />
                 <div className='description'>
                     <span>Anime</span>
-                    <h5>Anime character name</h5>
+                    <h3>{product.name}</h3>
+
+                    <span>{product.desc}</span>
                     <div className='star'>
                     <i ><FaStar/></i>
                     <i ><FaStar/></i>
                     <i ><FaStar/></i>
                     <i ><FaStar/></i>
                     </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="/" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
-
-                </div>
-            </div>
-            <div className='pro'>
-                <img src={image} alt="" />
-                <div className='description'>
-                    <span>Anime</span>
-                    <h5>Anime character name</h5>
-                    <div className='star'>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    <i ><FaStar/></i>
-                    </div>
-                    <h4>Rs 499</h4>
-                    <a href="/" className='cart'><FaCartPlus/></a>
+                    <span className="price">{product.price}</span>
+                    <button onClick={() => handleAddToCart(product)}>
+                    Add To Cart
+                  </button>
 
                 </div>
             </div>
 
+              ))}
         </div>
       </section>
     </>
+    )};
+
+    </div>
   )
 }
 

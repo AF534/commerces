@@ -1,24 +1,40 @@
 import './App.css';
-import ReactArrival from './component/Arrival';
-import Reactbanner from './component/banner';
-import Reactfeature from './component/feature';
-import Reactfooter from './component/footer';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ReactHome from './component/Home';
-import ReactNavbar from './component/Navbar';
-import ReactNews from './component/News';
-import Reactproduct from './component/product';
+import ReactAbout from './component/About';
+// import Reactproduct from './component/product';
+import Reactcontact from './component/contact';
+import Reactcart from './component/cart';
+// import Reactproduct from './component/product';
+import Reactproduct_page from './component/product_page';
+import Reactlogin from './component/login';
+import Reactdropdown from './component/dropdown/dropdown';
+import ReactNotfound from './component/Notfound';
+import Reactwork from './feature/work';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     < >
-      <ReactNavbar/>
-      <ReactHome/>
-      <Reactfeature/>
-      <Reactproduct/>
-      <Reactbanner/>
-      <ReactArrival/>
-      <ReactNews/>
-      <Reactfooter/>
+   <ToastContainer/>
+      <Router>
+      <Routes>
+        
+        <Route path='/about' element ={ <ReactAbout/>}/>
+        <Route path='/contact' element ={ <Reactcontact/>}/>
+        <Route path='/commerce' element ={ <ReactHome/>}/>
+        <Route path='/home' element ={ <ReactHome/>}/>
+        <Route path='/cart' element ={<Reactcart/>}/>
+        <Route path='/product' element ={<Reactproduct_page/>}/>
+        <Route path='/login' element ={<Reactlogin/>}/>
+        <Route path='/notfound' element ={<ReactNotfound/>}/>
+      </Routes>
+    </Router>
+  {/* <Reactlogin/> */}
+  
+ 
+
     </>
   );
 }
