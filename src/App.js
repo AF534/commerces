@@ -13,6 +13,8 @@ import ReactNotfound from './component/Notfound';
 import Reactwork from './feature/work';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Reactpayment from './component/payment/payment_page';
+
 
 function App() {
   return (
@@ -29,11 +31,11 @@ function App() {
         <Route path='/product' element ={<Reactproduct_page/>}/>
         <Route path='/login' element ={<Reactlogin/>}/>
         <Route path='/notfound' element ={<ReactNotfound/>}/>
+        <Route path='/payment' element ={<Reactpayment/>}/>
       </Routes>
     </Router>
   {/* <Reactlogin/> */}
-  
- 
+  {/* <Reactpayment/> */}
 
     </>
   );

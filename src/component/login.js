@@ -1,14 +1,20 @@
 import React from 'react'
 import { FaFacebook, FaGoogle, FaGooglePlus, FaGooglePlusG, FaLinkedin,FaCartPlus,FaUserCircle,FaTimes,FaOutdent} from 'react-icons/fa'
 import Reactfooter from './footer';
-import ReactNavbar from './Navbar';
 import ReactNews from './News';
 import image from './image/logo/scroll.jpg';
-import Reactdropdown from './dropdown/dropdown';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth"
+import { auth } from '../firebase';
+import { json, useNavigate } from 'react-router-dom';
 
 function Reactlogin() {
+	
+ 
+	
+	
 	// const cartTotalQuantity = useSelector(state => state.cart);
+	const navigate = useNavigate();
 	function signin(){
 		const container = document.getElementById('container');
 		container.classList.remove("right-panel-active");
@@ -25,6 +31,92 @@ function Reactlogin() {
 		const nav1 = document.getElementById('navbar');
 		nav1.classList.remove('active');
 	  }
+
+	const [loginemail,setloginemail]  = useState('');
+    const [loginpassword,setloginpassword]  = useState('');
+	const [registeremail,setregisteremail]  = useState('');
+    const [registerpassword,setregisterpassword]  = useState('');
+
+    const register = (event)=>{
+		event.preventDefault();
+		createUserWithEmailAndPassword(auth,registeremail,registerpassword)
+		  .then((userCredential)=>{
+		  
+			  console.log(userCredential);
+			  alert("you are sucessfully Register");
+			  
+		  }).catch((error)=>{
+			  console.log(error)
+			  alert(error);
+			  
+		  })
+		  navigate('/login');
+		  
+    }
+    const login = (event)=>{
+		event.preventDefault();
+		signInWithEmailAndPassword(auth,loginemail,loginpassword)
+		  .then((userCredential)=>{
+		  
+			  console.log(userCredential);
+			//   alert("You successfully Register")
+			  navigate('/home')
+			  
+		  }).catch((error)=>{
+			  console.log(error)
+			  alert(error);
+			  
+		  })
+
+		 
+    }
+	// const [UserData, setUserData] = useState({
+	// 	Name:"",
+	// 	Email:"",
+	// 	password:"",
+	// 	phone:"",
+	// });
+	//    let name, value;
+	// const postUserData =(event) =>{
+	// 	  name = event.target.name;
+	// 	  value = event.target.value;
+
+	// 	  setUserData({...UserData,[name]:value});
+	// 	};
+	
+	
+
+	// const submitData = async(event)=>{
+	// 	event.preventDefault();
+	// 	const {Name , Email, password, phone} = UserData;
+	//     const res = await fetch(
+	// 	"https://e-commerce-180ef-default-rtdb.firebaseio.com/UserDataRecord.json",
+	// 	{
+	// 		method: "POST",
+	// 		headers:{
+	// 			"Content-Type":"application/json"
+	// 		},
+	// 		body: JSON.stringify({
+	// 			Name,
+	// 			Email,
+	// 			password,
+	// 			phone,
+	// 		}),
+	// 	}
+	// 	);
+	// 	if(res){
+	// 		setUserData({
+	// 			Name:" ",
+	// 	        Email:" ",
+	// 	        password:" ",
+	// 	        phone:" ",
+    //        });
+	// 	}
+	// 	else{
+	// 		alert("fill the blank");
+	// 	}
+	// };
+
 	
   return (
     <>
@@ -72,19 +164,58 @@ function Reactlogin() {
 	 <section id='login'>
 <div className ="container" id="container">
 	<div className ="form-container sign-up-container">
-		<form action="#">
+		<form method='POST' action="#" >
 			<h1>Create Account</h1>
 			<div className ="social-container">
-				<i className='social'><FaFacebook/></i>
-				<i className='social'><FaGoogle/></i>
-			     <i className='social'><FaLinkedin/></i>
+				{/* <i className='social'><FaFacebook/></i>
+				<i className='social'  ><FaGoogle/></i>
+			     <i className='social'><FaLinkedin/></i> */}
+				 <a href="#" className ="social"><i className ="fab fa-facebook-f"><FaFacebook/></i></a>
+				<a href="#" className ="social"><i className ="fab fa-google-plus-g"><FaGooglePlusG/></i></a>
+				<a href="#" className ="social"><i className ="fab fa-linkedin-in"><FaLinkedin/></i></a>
 			</div>
 			<span className='use'>or use your email for registration</span>
-			<input type="text" placeholder="Name" autoComplete= {'off'}/>
-			<input type="email" placeholder="Email"required autoComplete = {'off'} />
-			<input type="password" placeholder="Password" required autoComplete='off'/>
-			<input type="number" placeholder="Mobile number" autoComplete='off' />
-			<button className='btn1'>Sign Up</button>
+			<input 
+			name='Name'
+			type="text" 
+			placeholder="Name"
+			//value ={UserData.Name}
+			//onChange={postUserData}
+			/>
+			<input 
+			name='Email'
+			type="email"
+			onChange={(e)=>{setregisteremail(e.target.value)}}
+			// onChangeCapture={postUserData}
+			
+			
+			//onChangeCapture={postUserData}
+			placeholder="Email" 
+			//value={UserData.Email}
+			required 
+			   />
+			<input 
+			name='password'
+			type="password" 
+			onChange={(e)=>{
+				setregisterpassword(e.target.value);
+				// postUserData()
+			}}
+		//	onChangeCapture={postUserData} 
+			placeholder="Scholar No"
+			//value={UserData.password}
+			 required 
+			//  autoComplete='off'
+			 />
+			<input
+			name='phone'
+			 type="number" 
+			 placeholder="Mobile number" 
+			 autoComplete='off'
+		//	 value={UserData.phone}
+			// onChange={postUserData}
+			 />
+			<button className='btn1' onClick={register}>Sign Up</button>
 		</form>
 	</div>
 	<div className ="form-container sign-in-container">
@@ -96,10 +227,10 @@ function Reactlogin() {
 				<a href="#" className ="social"><i className ="fab fa-linkedin-in"><FaLinkedin/></i></a>
 			</div>
 			<span className='use'>or use your account</span>
-			<input type="email" placeholder="Email" required autoComplete='off'/>
-			<input type="password" placeholder="Password" required  autoComplete="off"/>
+			<input type="email" onChange={(e)=>{setloginemail(e.target.value)}} placeholder="Email" required autoComplete='off'/>
+			<input type="password" onChange={(e)=>{setloginpassword(e.target.value)}} placeholder="Scholar No" required  autoComplete="off"/>
 			<a href="#">Forgot your password?</a>
-			<button className='btn1'>Sign In</button>
+			<button className='btn1' onClick={login}>Sign In</button>
 		</form>
 	</div>
 	<div className ="overlay-container">
@@ -112,7 +243,7 @@ function Reactlogin() {
 			<div className ="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
 				<p>Enter your personal details and start journey with us</p>
-				<button className ="ghost btn1" id="signUp" onClick={signup}>Sign Up</button>
+				<button className ="ghost btn1" id="signUp" onClick={signup}>Register</button>
 			</div>
 		</div>
 	</div>

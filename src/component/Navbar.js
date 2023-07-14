@@ -48,7 +48,13 @@ function ReactNavbar() {
           </li>
   
 
-          <li id='lg-bag'><a href="./login" className='cart'><i><FaUserCircle/></i></a></li>
+          <li id='lg-bag'><a href="./login" className='cart'>
+            <i>
+              <FaUserCircle/>
+              </i>
+            </a>
+            </li>
+            
           <li><a href="#" id='cut' onClick={handlecut}>X</a></li>
         </ul>
       </div>

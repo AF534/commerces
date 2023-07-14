@@ -84,7 +84,7 @@ function ReactAbout() {
           </i>
         </div>
       </section>
-       {/* <Reactdropdown/>  */}
+       <Reactdropdown/> 
       <section id="product" className="section-p1 about-header">
         <h2>
           <span className="color">#know us</span>

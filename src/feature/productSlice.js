@@ -11,9 +11,9 @@ export const productsFetch = createAsyncThunk(
     async () => {
       try {
         const response = await axios.get(
-          "https://chaoo-online-shop.herokuapp.com/products"
+          "http://localhost:3000/commerce",
         );
-        return response.data;
+       return response?.data;
       } catch (error) {
         console.log(error);
       }
@@ -29,8 +29,8 @@ const productsSlice = createSlice({
           state.status = "pending";
         },
         [productsFetch.fulfilled]: (state, action) => {
-          state.items = action.payload;
-          state.status = "success";
+         state.status = "success";
+         state.items = action.payload;
         },
         [productsFetch.rejected]: (state, action) => {
           state.status = "rejected";

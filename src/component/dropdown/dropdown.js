@@ -1,5 +1,6 @@
 import React from 'react'
 import './drop.css';
+import { FaUserCircle } from 'react-icons/fa';
 function Reactdropdown() {
   return (
     <>
@@ -11,40 +12,20 @@ function Reactdropdown() {
 <div class="wrapper">
       <ul id='drop'> 
         <li class="services down">
-          <a href="#">
-            <span>Services</span>
-            <i class="fa fa-angle-down icon"></i>
+          <a href="#" className='href'>
+            <span><i><FaUserCircle/></i></span>
+            {/* <i class="fa fa-angle-down icon"></i> */}
             <div class="sub-menu">
               <ul id='drop1'>
                 <li className='down'>
                   <a href="#">
-                    <span>Services 1</span>
+                    <span>Login</span>
                   </a>
                 </li>
-                <li className='down'>
-                  <a href="#">
+                <li className='down' id='block'>
+                  <a href="#"> 
                     <span>Services 2</span>
-                    <i class="fa fa-angle-right icon"></i>
-                    <div class="sub-menu-2">
-                        <ul id='drop2'>
-                            <li><a href="#"><span>Services 2 1</span></a></li>
-                            <li><a href="#"><span>Services 2 2</span></a></li>
-                            <li><a href="#"><span>Services 2 3</span></a></li>
-                        </ul>
-                    </div>
-                  </a>
-                </li>
-                <li className='down'>
-                  <a href="#">
-                    <span>Services 3</span>
-                    <i class="fa fa-angle-right icon"></i>
-                    <div class="sub-menu-2">
-                        <ul id='drop3'>
-                            <li><a href="#"><span>Services 3 1</span></a></li>
-                            <li><a href="#"><span>Services 3 2</span></a></li>
-                            <li><a href="#"><span>Services 3 3</span></a></li>
-                        </ul>
-                    </div>
+                  
                   </a>
                 </li>
               </ul>
@@ -53,7 +34,7 @@ function Reactdropdown() {
         </li>
         
       </ul>
-      <ul id='drop'> 
+      {/* <ul id='drop'> 
         <li class="services down">
           <a href="#">
             <span>Services</span>
@@ -320,7 +301,7 @@ function Reactdropdown() {
             <span>Gallery</span>
           </a>
         </li>
-      </ul>
+      </ul> */}
      
     </div>
     </>

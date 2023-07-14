@@ -32,7 +32,7 @@ function Reactfooter() {
         </div>
         <div className='col'>
             <h4>My Account</h4>
-            <a href="/">Sign In</a>
+            <a href="/login">Sign In</a>
             <a href="/cart">View cart</a>
             <a href="/">My wishlist</a>
             <a href="/">Track my order</a>

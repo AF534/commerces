@@ -788,7 +788,17 @@ p{
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
 }
-
+#header .logout{
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  color: #000;
+  background-color: #088;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.2 ease;
+}
 span .use {
 	font-size: 12px;
 }
@@ -1210,4 +1220,12 @@ footer a {
   .cart-summary .clear-btn {
     margin-bottom: 2rem;
   }
+}
+/*alert*/
+.swal-modal {
+  font-family: sans-serif;
+}
+
+.swal-text {
+  text-align: center;
 }

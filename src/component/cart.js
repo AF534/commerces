@@ -12,13 +12,14 @@ import {
   removeFromCart,
 } from "../feature/cartSlice";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { productsApi } from '../feature/productApi';
 import image from './image/logo/scroll.jpg';
 
 const Reactcart = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getTotals());
@@ -37,7 +38,9 @@ const Reactcart = () => {
     dispatch(clearCart());
   };
   const {cartTotalQuantity} = useSelector(state => state.cart);
-
+  const check_out = () =>{
+    navigate('/payment')
+  }
 return (
     <>
       <section id='header'>
@@ -149,7 +152,7 @@ return (
                 <span className="amount">${cart.cartTotalAmount}</span>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <button>Check out</button>
+              <button onClick={check_out}>Check out</button>
               <div className="continue-shopping">
                 <Link to="/home">
                   <svg
