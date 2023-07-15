@@ -25,7 +25,7 @@ function App() {
         
         <Route path='/about' element ={ <ReactAbout/>}/>
         <Route path='/contact' element ={ <Reactcontact/>}/>
-        <Route path='/commerce' element ={ <ReactHome/>}/>
+        <Route path='/' element ={ <ReactHome/>}/>
         <Route path='/home' element ={ <ReactHome/>}/>
         <Route path='/cart' element ={<Reactcart/>}/>
         <Route path='/product' element ={<Reactproduct_page/>}/>
